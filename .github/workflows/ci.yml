@@ -28,9 +28,17 @@ jobs:
 
       - name: Lint
         run: ruff check .
-
+        
       - name: Test
-        run: pytest -v
+        run: pytest -v --junitxml=reports/junit.xml --cov --cov-report=html:reports/coverage
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-${{ matrix.python-version }}
+          path: reports/
+          retention-days: 7
 
   deploy:
     needs: test
