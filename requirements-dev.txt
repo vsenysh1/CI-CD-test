@@ -2,3 +2,4 @@
 pytest
 ruff
 pytest-playwright
+pytest-cov
