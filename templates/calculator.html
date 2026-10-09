@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head><title>Calculator</title></head>
+<body>
+  <h1>Calculator</h1>
+  <label>First number <input id="a" type="number"></label>
+  <label>Second number <input id="b" type="number"></label>
+  <button id="add">Add</button>
+  <p id="result" data-testid="result"></p>
+  <script>
+    document.getElementById("add").addEventListener("click", async () => {
+      const a = document.getElementById("a").value;
+      const b = document.getElementById("b").value;
+      const response = await fetch(`/add?a=${a}&b=${b}`);
+      const data = await response.json();
+      document.getElementById("result").textContent = data.result;
+    });
+  </script>
+</body>
+</html>

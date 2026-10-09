@@ -16,3 +16,10 @@ def test_add_route():
     client = app.test_client()
     response = client.get("/add?a=2&b=3")
     assert response.get_json() == {"result": 5.0}
+    
+    
+def test_calculator_page():
+    client = app.test_client()
+    response = client.get("/calculator")
+    assert response.status_code == 200
+    assert b"Calculator" in response.data
