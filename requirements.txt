@@ -1,2 +1,2 @@
-pytest
-ruff
+flask
+gunicorn
